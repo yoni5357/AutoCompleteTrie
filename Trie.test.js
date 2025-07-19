@@ -23,6 +23,20 @@ describe("addWord", () => {
         expect(root.children['h'].children['e'].children['l'].children['l'].children['o'].endOfWord).toBe(true);
         expect(Object.keys(root.children['h'].children['e'].children['l'].children['l'].children).length).toBe(1);
     })
+
+    it("should handle adding an empty string", () => {
+        const root = new TrieNode();
+        root.addWord("");
+        expect(Object.keys(root.children).length).toBe(0);
+    });
+
+    it("should handle adding a single character", () => {
+        const root = new TrieNode();
+        root.addWord("a");
+        expect(root.children['a']).toBeDefined();
+        expect(root.children['a'].endOfWord).toBe(true);
+    });
+
 })
 
 //tests for Trie.findWord Method
@@ -62,6 +76,23 @@ describe("_getRemainingTree", () => {
         const remainingTree = root._getRemainingTree("hi", root);
         expect(remainingTree).toBeNull();
     });
+
+    it("should return the root node if the prefix is empty", () => {
+        const root = new TrieNode();
+        root.addWord("hello");
+        const remainingTree = root._getRemainingTree("", root);
+        expect(remainingTree).toBe(root);
+    });
+
+    it("should handle prefixes that match multiple words", () => {
+        const root = new TrieNode();
+        root.addWord("hello");
+        root.addWord("hell");
+        const remainingTree = root._getRemainingTree("he", root);
+        expect(remainingTree.children['l']).toBeDefined();
+        expect(remainingTree.children['l'].children['l'].endOfWord).toBe(true);
+        expect(remainingTree.children['l'].children['l'].children['o'].endOfWord).toBe(true);
+    });
 });
 
 //tests for _allWordsHelper method
@@ -84,6 +115,15 @@ describe("_allWordsHelper", () => {
         root._allWordsHelper("", root, allWords);
         expect(allWords.length).toBe(0);
     });
+
+    it("should handle a Trie with only one word", () => {
+        const root = new TrieNode();
+        root.addWord("hello");
+        const allWords = [];
+        root._allWordsHelper("", root, allWords);
+        expect(allWords).toContain("hello");
+    });
+
 });
 
 //tests for predictWords method
@@ -103,6 +143,19 @@ describe("predictWords", () => {
         const root = new TrieNode();
         root.addWord("hello");
         const predictions = root.predictWords("hi");
+        expect(predictions.length).toBe(0);
+    });
+
+    it("should handle a Trie with only one word", () => {
+        const root = new TrieNode();
+        root.addWord("hello");
+        const predictions = root.predictWords("he");
+        expect(predictions).toContain("hello");
+    });
+
+    it("should return an empty array if the Trie is empty", () => {
+        const root = new TrieNode();
+        const predictions = root.predictWords("he");
         expect(predictions.length).toBe(0);
     });
 });
