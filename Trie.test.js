@@ -1,6 +1,6 @@
 require("./Trie")
 
-//write tests for Trie.addWord
+//tests for Trie.addWord method
 const TrieNode = require("./Trie");
 
 describe("addWord", () => {
@@ -24,4 +24,25 @@ describe("addWord", () => {
         expect(Object.keys(root.children['h'].children['e'].children['l'].children['l'].children).length).toBe(1);
     })
 })
+
+//tests for Trie.findWord Method
+describe("findWord", () => {
+    it("should return true for a word that exists in the Trie", () => {
+        const root = new TrieNode();
+        root.addWord("hello");
+        expect(root.findWord("hello")).toBe(true);
+    });
+
+    it("should return false for a word that does not exist in the Trie", () => {
+        const root = new TrieNode();
+        root.addWord("hello");
+        expect(root.findWord("hell")).toBe(false);
+    });
+
+    it("should return false for an empty string", () => {
+        const root = new TrieNode();
+        root.addWord("hello");
+        expect(root.findWord("")).toBe(false);
+    });
+});
 

@@ -24,22 +24,22 @@ class TrieNode{
     }
 
     findWord(word){
-        if(this.value === word && this.endOfWord){
+        if(this.endOfWord){
             return true
         }
-
-        if(this.value !== word[0]){
+        else if(this.children[word[0]]){
+            let slicedWord = word.slice(1,word.length)
+            return this.children[word[0]].findWord(slicedWord)
+        }
+        else{
             return false
         }
-
-        let splicedWord = word.splice(0,1)
-
     }
-
 }
 
 let root = new TrieNode();
 root.addWord("hello")
-console.log(root)
+root.findWord("hello")
+// console.log(root)
 
 module.exports = TrieNode
