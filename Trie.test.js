@@ -46,3 +46,43 @@ describe("findWord", () => {
     });
 });
 
+//tests for _getRemainingTree method
+describe("_getRemainingTree", () => {
+    it("should return the remaining tree for a given prefix", () => {
+        const root = new TrieNode();
+        root.addWord("hello");
+        const remainingTree = root._getRemainingTree("he", root);
+        expect(remainingTree.children['l']).toBeDefined();
+        expect(remainingTree.children['l'].children['l'].children['o'].endOfWord).toBe(true);
+    });
+
+    it("should return null if the prefix does not exist", () => {
+        const root = new TrieNode();
+        root.addWord("hello");
+        const remainingTree = root._getRemainingTree("hi", root);
+        expect(remainingTree).toBeNull();
+    });
+});
+
+//tests for _allWordsHelper method
+describe("_allWordsHelper", () => {
+    it("should collect all words in the Trie", () => {
+        const root = new TrieNode();
+        root.addWord("hello");
+        root.addWord("hell");
+        root.addWord("heaven");
+        const allWords = [];
+        root._allWordsHelper("", root, allWords);
+        expect(allWords).toContain("hello");
+        expect(allWords).toContain("hell");
+        expect(allWords).toContain("heaven");
+    });
+
+    it("should return an empty array if no words exist", () => {
+        const root = new TrieNode();
+        const allWords = [];
+        root._allWordsHelper("", root, allWords);
+        expect(allWords.length).toBe(0);
+    });
+});
+

@@ -35,11 +35,38 @@ class TrieNode{
             return false
         }
     }
+
+    predictWords(prefix){
+
+    }
+
+    _getRemainingTree(prefix, node){
+        if(!prefix){
+            return node
+        }
+        if(node.children[prefix[0]]){
+            let sliced = prefix.slice(1,prefix.length)
+            return node._getRemainingTree(sliced, node.children[prefix[0]])
+        }
+        else{
+            return null
+        }
+    }
+
+    _allWordsHelper(prefix, node, allWords){
+        if(node.endOfWord){
+            allWords.push(prefix)
+        }
+        for(let child in node.children){
+            this._allWordsHelper(prefix + child, node.children[child], allWords)
+        }
+    }
 }
 
 let root = new TrieNode();
 root.addWord("hello")
 root.findWord("hello")
+root._allWordsHelper("", root, [])
 // console.log(root)
 
 module.exports = TrieNode
