@@ -66,7 +66,7 @@ describe("_getRemainingTree", () => {
 
 //tests for _allWordsHelper method
 describe("_allWordsHelper", () => {
-    it("should collect all words in the Trie", () => {
+    it("should return an array containing all words in the Trie for a given prefix", () => {
         const root = new TrieNode();
         root.addWord("hello");
         root.addWord("hell");
@@ -83,6 +83,27 @@ describe("_allWordsHelper", () => {
         const allWords = [];
         root._allWordsHelper("", root, allWords);
         expect(allWords.length).toBe(0);
+    });
+});
+
+//tests for predictWords method
+describe("predictWords", () => {
+    it("should return all words that start with a given prefix", () => {
+        const root = new TrieNode();
+        root.addWord("hello");
+        root.addWord("hell");
+        root.addWord("heaven");
+        const predictions = root.predictWords("he");
+        expect(predictions).toContain("hello");
+        expect(predictions).toContain("hell");
+        expect(predictions).toContain("heaven");
+    });
+
+    it("should return an empty array if no words match the prefix", () => {
+        const root = new TrieNode();
+        root.addWord("hello");
+        const predictions = root.predictWords("hi");
+        expect(predictions.length).toBe(0);
     });
 });
 

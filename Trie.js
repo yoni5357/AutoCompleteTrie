@@ -37,7 +37,11 @@ class TrieNode{
     }
 
     predictWords(prefix){
-
+        let node = this._getRemainingTree(prefix, this)
+        if(!node){
+            return []
+        }
+        return node._allWordsHelper(prefix,node,[])
     }
 
     _getRemainingTree(prefix, node){
@@ -60,13 +64,15 @@ class TrieNode{
         for(let child in node.children){
             this._allWordsHelper(prefix + child, node.children[child], allWords)
         }
+        return allWords
     }
 }
 
 let root = new TrieNode();
-root.addWord("hello")
-root.findWord("hello")
-root._allWordsHelper("", root, [])
-// console.log(root)
+root.addWord("hello");
+root.addWord("hell");
+root.addWord("heaven");
+const predictions = root.predictWords("he");
+console.log(predictions)
 
 module.exports = TrieNode
