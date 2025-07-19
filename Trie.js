@@ -12,17 +12,14 @@ class TrieNode{
             return
         }
 
-        if(!this.children[word[0]]){
-            // let node;
-            // if(word.lentgh > 1){
-            //     node = new TrieNode(chars[i], false);
-            // }
-            let node = new TrieNode(chars[i], false);
-            this.children[chars[i]] = node;
-        }
+        let char = word[0];
 
-        let splicedWord = chars.splice(i,1).join("");
-        this.children[word[0]].addWord(splicedWord);
+        if(!this.children[word[0]]){
+            let node = new TrieNode(word[0], false);
+            this.children[word[0]] = node;
+        }
+        let splicedWord = word.slice(1,word.length);
+        this.children[char].addWord(splicedWord);
         
     }
 
@@ -40,5 +37,9 @@ class TrieNode{
     }
 
 }
+
+let root = new TrieNode();
+root.addWord("hello")
+console.log(root)
 
 module.exports = TrieNode
