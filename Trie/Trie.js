@@ -14,21 +14,21 @@ class TrieNode{
 
         let char = word[0];
 
-        if(!this.children[word[0]]){
-            let node = new TrieNode(word[0], false);
-            this.children[word[0]] = node;
+        if(!this.children[char]){
+            let node = new TrieNode(char, false);
+            this.children[char] = node;
         }
-        let splicedWord = word.slice(1,word.length);
-        this.children[char].addWord(splicedWord);
+        let slicedWord = word.slice(1);
+        this.children[char].addWord(slicedWord);
         
     }
 
     findWord(word){
-        if(this.endOfWord){
+        if(this.endOfWord && word.length === 1){
             return true
         }
         else if(this.children[word[0]]){
-            let slicedWord = word.slice(1,word.length)
+            let slicedWord = word.slice(1)
             return this.children[word[0]].findWord(slicedWord)
         }
         else{
