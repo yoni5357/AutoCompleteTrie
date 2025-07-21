@@ -21,4 +21,4 @@ function validateArgs(word, command){
     validateCommand(command)
 }
 
-module.exports = validateArgs()
+module.exports = {validateWord, validateCommand}

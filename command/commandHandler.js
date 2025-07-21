@@ -1,13 +1,15 @@
 const TrieNode = require("../Trie/Trie")
 const root = new TrieNode()
+const {validateWord, validateCommand} = require("../validation")
 
 function add(word){
-    if(!word){
-        console.log("please enter a word to add to the dictionary");
+    try{
+        validateWord(word)
+    }catch(err){
+        console.log(err.message)
     }
-    else{
-        root.addWord(word);
-    }
+    root.addWord(word);
+    
 }
 
 function find(word){
