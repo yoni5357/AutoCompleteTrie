@@ -68,11 +68,4 @@ class TrieNode{
     }
 }
 
-let root = new TrieNode();
-root.addWord("hello");
-root.addWord("hell");
-root.addWord("heaven");
-const predictions = root.predictWords("he");
-console.log(predictions)
-
 module.exports = TrieNode
