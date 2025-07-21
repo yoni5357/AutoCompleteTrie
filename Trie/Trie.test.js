@@ -160,3 +160,22 @@ describe("predictWords", () => {
     });
 });
 
+//unit tests for entire flow of adding, finding, and completing words
+describe("Trie full flow", () => {
+    it("should add, find, and complete words correctly", () => {
+        const root = new TrieNode();
+        root.addWord("apple");
+        root.addWord("app");
+        root.addWord("banana");
+
+        expect(root.findWord("apple")).toBe(true);
+        expect(root.findWord("app")).toBe(true);
+        expect(root.findWord("banana")).toBe(true);
+        expect(root.findWord("orange")).toBe(false);
+
+        const completions = root.predictWords("ap");
+        expect(completions).toContain("apple");
+        expect(completions).toContain("app");
+        expect(completions.length).toBe(2);
+    });
+});
