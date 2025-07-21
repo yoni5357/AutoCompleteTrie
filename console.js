@@ -1,6 +1,6 @@
 const PromptSync = require("prompt-sync")
 const prompt = PromptSync();
-const {add,find} = require("./command/commandHandler")
+const {add,find,complete} = require("./command/commandHandler")
 
 function run(){
 
@@ -14,6 +14,9 @@ function run(){
                 break;
             case "find":
                 find(word)
+                break;
+            case "complete":
+                complete(word)
                 break;
         }
     }

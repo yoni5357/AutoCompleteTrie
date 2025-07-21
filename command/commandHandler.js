@@ -3,25 +3,31 @@ const root = new TrieNode()
 
 function add(word){
     if(!word){
-        console.log("please enter a word to add to the dictionary")
+        console.log("please enter a word to add to the dictionary");
     }
     else{
-        root.addWord(word)
+        root.addWord(word);
     }
 }
 
 function find(word){
     if(!root.findWord(word)){
-        console.log(`✗ ${word} not found in dictionary`)
+        console.log(`✗ ${word} not found in dictionary`);
     }
     else{
-        console.log(`✓ ${word} exists in dictionary`)
+        console.log(`✓ ${word} exists in dictionary`);
     }
 }
 
 function complete(prefix){
-
+    const suggestions = root.predictWords(prefix);
+    if(!suggestions){
+        console.log(`No suggestions found for ${prefix}`)
+    }
+    else{
+        console.log(`Suggestions for ${prefix}: ${suggestions}`)
+    }
 }
 
 
-module.exports = {add,find}
+module.exports = {add,find,complete}
