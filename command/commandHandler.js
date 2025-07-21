@@ -8,8 +8,8 @@ function add(word){
     }catch(err){
         console.log(err.message)
     }
-    root.addWord(word);
-    
+    root.addWord(word.toLowerCase());
+    console.log(`✓ Added ${word.toLowerCase()} to dictionary`)
 }
 
 function find(word){
@@ -18,7 +18,7 @@ function find(word){
     }catch(err){
         console.log(err.message)
     }
-    if(!root.findWord(word)){
+    if(!root.findWord(word.toLowerCase())){
         console.log(`✗ ${word} not found in dictionary`);
     }
     else{
@@ -27,12 +27,12 @@ function find(word){
 }
 
 function complete(prefix){
-    const suggestions = root.predictWords(prefix);
     try{
         validateWord(prefix)
     }catch(err){
         console.log("Enter a valid prefix")
     }
+    const suggestions = root.predictWords(prefix.toLowerCase());
     if(!suggestions){
         console.log(`No suggestions found for ${prefix}`)
     }

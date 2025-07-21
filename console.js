@@ -1,13 +1,14 @@
 const PromptSync = require("prompt-sync")
 const prompt = PromptSync();
-const {add,find,complete,help,exit} = require("./command/commandHandler")
+const {add,find,complete,help,exit} = require("./command/commandHandler");
 
 function run(){
 
     displayWelcome()
 
     while(true){
-        let [command, word] = prompt('').split(" ");
+        let [command, word] = prompt('> ').split(" ");
+
         switch(command){
             case "add":
                 add(word)
@@ -23,15 +24,15 @@ function run(){
                 break;
             case "exit":
                 exit()
-                return
+                return;
             default:
-                console.log("Invalid Command")
+                console.log("Invalid Command");
         }
     }
 }
 
 function displayWelcome(){
-    console.log(`=== AutoComplete Trie Console ===\nType 'help' for commands`)
+    console.log(`=== AutoComplete Trie Console ===\nType 'help' for commands`);
 }
 
 
