@@ -13,10 +13,12 @@ function add(word){
 }
 
 function find(word){
-    if(!word){
-        console.log("Enter a word to find")
+    try{
+        validateWord(word)
+    }catch(err){
+        console.log(err.message)
     }
-    else if(!root.findWord(word)){
+    if(!root.findWord(word)){
         console.log(`✗ ${word} not found in dictionary`);
     }
     else{
@@ -26,10 +28,12 @@ function find(word){
 
 function complete(prefix){
     const suggestions = root.predictWords(prefix);
-    if(!prefix){
+    try{
+        validateWord(prefix)
+    }catch(err){
         console.log("Enter a valid prefix")
     }
-    else if(!suggestions){
+    if(!suggestions){
         console.log(`No suggestions found for ${prefix}`)
     }
     else{
