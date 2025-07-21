@@ -1,24 +1,13 @@
-const validCommands = ["add", "find", "complete", "help", "exit"]
 
 function validateWord(word){
     if(!word){
         throw new Error("Missing word argument")
     }
-}
 
-function validateCommand(command){
-    if(!command){
-        throw new Error("Missing command argument")
+    if(!/^[a-zA-Z]+$/.test(word)){
+        throw new Error("Invalid Word")
     }
-    if(!validCommands.contains(command.toLowerCase())){
-        throw new Error("Invalid Command")
-    }
-
 }
 
-function validateArgs(word, command){
-    validateWord(word)
-    validateCommand(command)
-}
 
-module.exports = {validateWord, validateCommand}
+module.exports = {validateWord}

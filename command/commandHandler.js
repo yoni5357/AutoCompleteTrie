@@ -1,6 +1,6 @@
 const TrieNode = require("../Trie/Trie")
 const root = new TrieNode()
-const {validateWord, validateCommand} = require("../validation")
+const {validateWord} = require("../validation")
 
 function add(word){
     try{
