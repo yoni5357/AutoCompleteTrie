@@ -38,5 +38,9 @@ function help(){
   exit           - Quit program`)
 }
 
+function exit(){
+    console.log("Goodbye!")
+}
 
-module.exports = {add,find,complete,help}
+
+module.exports = {add,find,complete,help,exit}

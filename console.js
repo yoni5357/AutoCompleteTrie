@@ -1,6 +1,6 @@
 const PromptSync = require("prompt-sync")
 const prompt = PromptSync();
-const {add,find,complete,help} = require("./command/commandHandler")
+const {add,find,complete,help,exit} = require("./command/commandHandler")
 
 function run(){
 
@@ -20,6 +20,12 @@ function run(){
                 break;
             case "help":
                 help()
+                break;
+            case "exit":
+                exit()
+                return
+            default:
+                console.log("Invalid Command")
         }
     }
 }
