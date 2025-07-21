@@ -29,5 +29,14 @@ function complete(prefix){
     }
 }
 
+function help(){
+    console.log(`Commands:
+  add <word>      - Add word to dictionary
+  find <word>     - Check if word exists
+  complete <prefix> - Get completions
+  help           - Show this message
+  exit           - Quit program`)
+}
 
-module.exports = {add,find,complete}
+
+module.exports = {add,find,complete,help}
