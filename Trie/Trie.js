@@ -24,7 +24,7 @@ export class TrieNode{
     }
 
     findWord(word){
-        if(this.endOfWord && word.length === 1){
+        if(this.endOfWord && word.length === 0){
             return true
         }
         else if(this.children[word[0]]){

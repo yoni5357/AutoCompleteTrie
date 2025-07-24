@@ -5,6 +5,13 @@ import { validateWord } from "./validation.js";
 function add(){
     let word = document.getElementById('word-input').value
     let message = document.getElementById('message')
+    message.innerHTML = "";
+    message.className = "";
+    let wordCount = document.getElementById('word-count');
+    if(root.findWord(word)){
+        return;
+    }
+
     try{
         validateWord(word)
     }catch(err){
@@ -15,11 +22,14 @@ function add(){
     root.addWord(word.toLowerCase());
     message.textContent = `✓ Added ${word.toLowerCase()} to dictionary`
     message.className = "success-message"
+
+    wordCount.textContent = parseInt(wordCount.textContent) + 1;
+
 }
 
 
 document.addEventListener('DOMContentLoaded',() => {
-    let addButton = document.getElementById('add-button')
-    addButton.addEventListener('click', add)
+    let addButton = document.getElementById('add-button');
+    addButton.addEventListener('click', add);
+    
 })
-
