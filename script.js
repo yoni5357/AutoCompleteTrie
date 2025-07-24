@@ -27,9 +27,36 @@ function add(){
 
 }
 
+function showSuggestions(){
+    let prefix = document.getElementById('prefix-input').value;
+    let suggestionsDiv = document.getElementById('suggestions');
+    if(prefix.length === 0){
+        suggestionsDiv.innerHTML = "";
+        suggestionsDiv.className = "";
+        return;
+    }
+    let suggestions = root.predictWords(prefix.toLowerCase());
+    suggestionsDiv.innerHTML = "";
+    suggestionsDiv.className = "suggestions";
+    if(suggestions.length === 0){
+        suggestionsDiv.textContent = "No suggestions found";
+        return;
+    }
+    suggestions.forEach(word => {
+        let suggestion = document.createElement('div');
+        suggestion.textContent = word;
+        suggestionsDiv.appendChild(suggestion);
+    });
+
+
+
+}
+
 
 document.addEventListener('DOMContentLoaded',() => {
     let addButton = document.getElementById('add-button');
     addButton.addEventListener('click', add);
+    let prefixInput = document.getElementById('prefix-input');
+    prefixInput.addEventListener('input', showSuggestions);
     
 })

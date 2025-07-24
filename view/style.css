@@ -71,3 +71,21 @@
     padding-top: 5px;
     padding-bottom: 5px;
 }
+
+#suggestion-container{
+    position: relative;
+    width: 100%;
+}
+
+.suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 10;
+}
