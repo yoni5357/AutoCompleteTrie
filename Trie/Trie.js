@@ -1,4 +1,4 @@
-class TrieNode{
+export class TrieNode{
     constructor(value = null, endOfWord){
         this.value = value
         this.endOfWord = endOfWord
@@ -68,4 +68,5 @@ class TrieNode{
     }
 }
 
-module.exports = TrieNode
+// module.exports = TrieNode
+export default TrieNode

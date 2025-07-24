@@ -1,5 +1,5 @@
 
-function validateWord(word){
+export function validateWord(word){
     if(!word){
         throw new Error("Missing word argument")
     }
@@ -10,4 +10,5 @@ function validateWord(word){
 }
 
 
-module.exports = {validateWord}
+// module.exports = {validateWord}
+export default validateWord

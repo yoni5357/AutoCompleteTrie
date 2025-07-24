@@ -11,6 +11,11 @@
     justify-content: space-around;
 }
 
+#add-message-container{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+}
 
 .input-container{
     width: 100%;
@@ -49,4 +54,20 @@
 
 #word-count{
     color: #6A81EA;
+}
+
+.success-message{
+    border-radius: 5px;
+    background-color: #C6F6D5;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.error-message{
+    border-radius: 5px;
+    background-color: #FED7D7;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
