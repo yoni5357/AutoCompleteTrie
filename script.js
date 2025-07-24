@@ -47,9 +47,6 @@ function showSuggestions(){
         suggestion.textContent = word;
         suggestionsDiv.appendChild(suggestion);
     });
-
-
-
 }
 
 
