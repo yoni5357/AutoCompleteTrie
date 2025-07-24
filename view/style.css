@@ -1,0 +1,52 @@
+*{
+    box-sizing: border-box;
+}
+
+#main-container{
+    margin: auto;
+    width: 400px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+
+.input-container{
+    width: 100%;
+}
+
+.input{
+    border: 1px solid gray;
+    border-radius: 5px;
+    height: 30px;
+    width: 100%;
+    padding-left: 5px;
+}
+
+.input-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+#add-button{
+    background-color: #6A81EA;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    width: 30%;
+}
+
+#word-input{
+    width: 65%;
+}
+
+#word-count-container{
+    text-align: center;
+    background-color: #F8FAFC;
+    border-radius: 8px;
+}
+
+#word-count{
+    color: #6A81EA;
+}
